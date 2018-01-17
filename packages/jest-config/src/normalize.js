@@ -118,9 +118,10 @@ const setupBabelJest = (options: InitialOptions) => {
   } else {
     babelJest = Resolver.findNodeModule('babel-jest', {basedir});
     if (babelJest) {
-      options.transform = {
+      options.transform = Object.assign(options.transform, {
         [DEFAULT_JS_PATTERN]: 'babel-jest',
-      };
+        customJSPattern: undefined
+      });
     }
   }
 
